@@ -1,0 +1,19 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "forkify project ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GurvirSingh/JS_Forkify_Project.git"
+  },
+  "author": "Gurvir Bhogal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GurvirSingh/JS_Forkify_Project/issues"
+  },
+  "homepage": "https://github.com/GurvirSingh/JS_Forkify_Project#readme"
+}
