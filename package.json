@@ -4,7 +4,8 @@
   "description": "forkify project ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development", 
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/GurvirSingh/JS_Forkify_Project/issues"
   },
-  "homepage": "https://github.com/GurvirSingh/JS_Forkify_Project#readme"
+  "homepage": "https://github.com/GurvirSingh/JS_Forkify_Project#readme",
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
 }
