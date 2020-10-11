@@ -16,7 +16,6 @@ shopping list objects
 liked recepies
 */
 const state = {};
-window.state = state;
 
 const controlSearch = async () => {
     // 1- get the query from the view 
@@ -60,13 +59,13 @@ elements.searchResPages.addEventListener('click', e => {
         const goToPage = parseInt(btn.dataset.goto, 10);
         searchView.clearResults();
         searchView.renderResults(state.search.result, goToPage);
-        console.log(goToPage);
+        // console.log(goToPage);
     }
 });
 
 const controlRecipe = async () => {
     const id = window.location.hash.replace('#', '');
-    console.log(id);
+    // console.log(id);
 
     if(id) {
         recipeView.clearRecipe();
@@ -123,6 +122,8 @@ elements.shopping.addEventListener('click', e => {
 
 // Like controller
 state.likes = new Likes();
+likesView.toggleLikeMenu(state.likes.getNumLikes());
+
 const controlLike = () => {
     if(!state.likes) state.likes = new Likes();
     const currentId = state.recipe.id;
@@ -137,18 +138,32 @@ const controlLike = () => {
             );
         // toggle like button
         likesView.toggleLikeBtn(true);
+        likesView.renderLike(newLike);
         
-        console.log(state.likes);
+        // console.log(state.likes);
         
         
     } else {
         // remove like 
-        likesView.toggleLikeBtn(false);
         state.likes.deleteLike(currentId);
+        likesView.toggleLikeBtn(false);
 
-        console.log(state.likes);
+        // console.log(state.likes);
+        likesView.deleteLikes(currentId);
     }
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
 }
+
+// each time the page loads sotre recipies in the likes 
+window.addEventListener('load', () => {
+    state.likes = new Likes();
+    state.likes.readStorage();
+
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
+    state.likes.likes.forEach(like => likesView.renderLike(like));
+})
+
+
 
 // Handling recipe buttons 
 elements.recipe.addEventListener('click', e => {
@@ -167,5 +182,3 @@ elements.recipe.addEventListener('click', e => {
         controlLike();
     }
 }); 
-
-window.l = new List();
